@@ -21,6 +21,9 @@
 #define myPORTC (*((volatile unsigned char*)(0x35)))
 #define myPINC (*((volatile unsigned char*)(0x33)))
 
-
+#define setBit(port,pin) (port|=(1<<pin))
+#define clearBit(port,pin) (port&= ~(1<<pin))
+#define toggleBit(port,pin) (port^=(1<<pin))
+#define readBit(port,pin) (port&(1<<pin))
 
 #endif /* DIO_DRIVER_H_ */
