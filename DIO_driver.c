@@ -5,18 +5,31 @@
  *      Author: aliaa
  */
 #include<DIO_driver.h>
-void makeOutput(port,pin){
-	setBit(port,pin);
+void makeOutput(reg,pin){
+	setBit(reg,pin);
 }
 
-void makeInput(port,pin){
-	clearBit(port,pin);
+void makeInput(reg,pin){
+	clearBit(reg,pin);
 }
-void outputHigh(port,pin){
-	setBit(port,pin);
+void outputHigh(reg,pin){
+	setBit(reg,pin);
 }
-void outputLow(port,pin){
-	clearBit(port,pin);
+void outputLow(reg,pin){
+	clearBit(reg,pin);
 }
 
-
+char readInput(reg,pin){
+	if (readBit(reg,pin)>1){
+		return 1;
+	}
+	else{
+	return 0 ;
+	}
+}
+void turnOnPullUP(reg,pin){
+	setBit(reg,pin);
+}
+void turnOffPullUP(reg,pin){
+	clearBit(reg,pin);
+}
