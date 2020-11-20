@@ -18,6 +18,7 @@ Linker script and memory map
 
 LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
 LOAD ./DIO_driver.o
+LOAD ./main.o
 LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
 LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
@@ -112,7 +113,7 @@ LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x206
+.text           0x00000000      0x2ae
  *(.vectors)
  .vectors       0x00000000       0x54 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -186,36 +187,39 @@ LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000068                __vector_18
                 0x00000068                __vector_20
  .text          0x0000006c        0x0 ./DIO_driver.o
+ .text          0x0000006c        0x0 ./main.o
  .text          0x0000006c        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                 0x0000006c                . = ALIGN (0x2)
  *(.text.*)
  .text.makeOutput
-                0x0000006c       0x36 ./DIO_driver.o
+                0x0000006c       0x44 ./DIO_driver.o
                 0x0000006c                makeOutput
  .text.makeInput
-                0x000000a2       0x38 ./DIO_driver.o
-                0x000000a2                makeInput
+                0x000000b0       0x46 ./DIO_driver.o
+                0x000000b0                makeInput
  .text.outputHigh
-                0x000000da       0x36 ./DIO_driver.o
-                0x000000da                outputHigh
+                0x000000f6       0x44 ./DIO_driver.o
+                0x000000f6                outputHigh
  .text.outputLow
-                0x00000110       0x38 ./DIO_driver.o
-                0x00000110                outputLow
+                0x0000013a       0x46 ./DIO_driver.o
+                0x0000013a                outputLow
  .text.readInput
-                0x00000148       0x4c ./DIO_driver.o
-                0x00000148                readInput
+                0x00000180       0x54 ./DIO_driver.o
+                0x00000180                readInput
  .text.turnOnPullUP
-                0x00000194       0x36 ./DIO_driver.o
-                0x00000194                turnOnPullUP
+                0x000001d4       0x44 ./DIO_driver.o
+                0x000001d4                turnOnPullUP
  .text.turnOffPullUP
-                0x000001ca       0x38 ./DIO_driver.o
-                0x000001ca                turnOffPullUP
- .text.libgcc   0x00000202        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00000202                . = ALIGN (0x2)
+                0x00000218       0x46 ./DIO_driver.o
+                0x00000218                turnOffPullUP
+ .text.main     0x0000025e       0x4c ./main.o
+                0x0000025e                main
+ .text.libgcc   0x000002aa        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000002aa                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000202        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00000202                exit
-                0x00000202                _exit
+ .fini9         0x000002aa        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000002aa                exit
+                0x000002aa                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -234,15 +238,16 @@ LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000202        0x4 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x000002aa        0x4 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000206                _etext = .
+                0x000002ae                _etext = .
 
-.data           0x00800060        0x0 load address 0x00000206
+.data           0x00800060        0x0 load address 0x000002ae
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .data          0x00800060        0x0 ./DIO_driver.o
+ .data          0x00800060        0x0 ./main.o
  .data          0x00800060        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.data*)
  *(.rodata)
@@ -257,12 +262,13 @@ LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.bss)
  .bss           0x00800060        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .bss           0x00800060        0x0 ./DIO_driver.o
+ .bss           0x00800060        0x0 ./main.o
  .bss           0x00800060        0x0 d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.bss*)
  *(COMMON)
                 0x00800060                PROVIDE (__bss_end, .)
-                0x00000206                __data_load_start = LOADADDR (.data)
-                0x00000206                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000002ae                __data_load_start = LOADADDR (.data)
+                0x000002ae                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800060        0x0
                 0x00800060                PROVIDE (__noinit_start, .)
@@ -287,13 +293,15 @@ LOAD d:/apps_files/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000      0x54c
+.stab           0x00000000      0x6cc
  *(.stab)
  .stab          0x00000000      0x54c ./DIO_driver.o
+ .stab          0x0000054c      0x180 ./main.o
+                                0x39c (size before relaxing)
 
-.stabstr        0x00000000      0x8dc
+.stabstr        0x00000000      0x8f2
  *(.stabstr)
- .stabstr       0x00000000      0x8dc ./DIO_driver.o
+ .stabstr       0x00000000      0x8f2 ./DIO_driver.o
 
 .stab.excl
  *(.stab.excl)

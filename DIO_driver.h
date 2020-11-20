@@ -21,9 +21,17 @@
 #define myPORTC (*((volatile unsigned char*)(0x35)))
 #define myPINC (*((volatile unsigned char*)(0x33)))
 
-#define setBit(port,pin) (port|=(1<<pin))
-#define clearBit(port,pin) (port&= ~(1<<pin))
-#define toggleBit(port,pin) (port^=(1<<pin))
-#define readBit(port,pin) (port&(1<<pin))
+
+void makeOutput( char* reg,unsigned char pin);
+void makeInput( char* reg,unsigned char pin);
+void outputLow( char* reg,unsigned char pin);
+void outputHigh( char* reg,unsigned char pin);
+char readInput( char* reg,unsigned char pin);
+void turnOnPullUP(  char* reg,unsigned char pin);
+void turnOffPullUP(  char* reg,unsigned char pin);
+
+
+
+
 
 #endif /* DIO_DRIVER_H_ */

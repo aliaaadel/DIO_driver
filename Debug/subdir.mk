@@ -4,13 +4,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../DIO_driver.c 
+../DIO_driver.c \
+../main.c 
 
 OBJS += \
-./DIO_driver.o 
+./DIO_driver.o \
+./main.o 
 
 C_DEPS += \
-./DIO_driver.d 
+./DIO_driver.d \
+./main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
